@@ -6,7 +6,6 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Training} from '../Training/Training';
 import {Block} from '../../components/Block';
-import {server} from '../../server/firebaseconfig';
 import {Photos} from '../BodyPhotoScreen/Photos';
 import {DictionaryScreen} from '../Dictionaries/DictionaryScreen';
 import {getCurrentPageTitle} from '../../utils/routerUtils';

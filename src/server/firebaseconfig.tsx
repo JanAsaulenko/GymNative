@@ -1,3 +1,5 @@
+import {View} from 'react-native';
+
 import app from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/auth';
@@ -26,3 +28,7 @@ class Server {
   }
 }
 export const server = new Server();
+
+export const q = () => {
+  return <View>sdsds</View>;
+};

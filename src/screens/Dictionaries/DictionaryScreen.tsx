@@ -3,11 +3,8 @@ import {View, StyleSheet, Text, Button} from 'react-native';
 import {Header} from '../../components/shared/Header';
 import {ButtonAdd} from '../../components/ButtonAdd';
 import {ScrollView} from 'react-native-gesture-handler';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Training} from '../Training/Training';
 import {Block} from '../../components/Block';
-import {server} from '../../server/firebaseconfig';
-import {Photos} from '../BodyPhotoScreen/Photos';
+import {ServerContext} from '../../contexts/ServerContext';
 const styles = StyleSheet.create({
   main: {
     position: 'relative',
@@ -28,7 +25,9 @@ export const DictionaryScreen = (props: any) => {
     });
   }, [props.navigation]);
 
-  server.getTrainings().then(data => {
+  const serverContext = React.useContext(ServerContext);
+
+  serverContext.api.getTrainings().then(data => {
     console.log(data);
   });
 
