@@ -1,9 +1,8 @@
-import {View} from 'react-native';
 import firebase from 'firebase';
 import app from 'firebase/app';
-
 import 'firebase/database';
-var firebaseConfig = {
+
+const firebaseConfig = {
   apiKey: 'AIzaSyBP6q2IPrfEBtdIKwCQB0f9hL0S8ND0lL0',
   authDomain: 'nativegym-1ed04.firebaseapp.com',
   databaseURL: 'https://nativegym-1ed04.firebaseio.com',
@@ -27,8 +26,4 @@ class Server {
     return trainings;
   }
 }
-export const server = new Server();
-
-export const q = () => {
-  return <View>sdsds</View>;
-};
+export const server: Server = new Server();

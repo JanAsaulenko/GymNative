@@ -1,14 +1,6 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  Clipboard,
-  TextInput,
-} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {useFocusEffect} from '@react-navigation/native';
+import {View, Text, StyleSheet} from 'react-native';
+
 const styles = StyleSheet.create({
   main: {
     position: 'relative',
@@ -20,12 +12,8 @@ const styles = StyleSheet.create({
   },
 });
 
-type StackParamList = {};
 export const Training = (proper: any) => {
-  console.log(proper);
-
   const [value, setValue] = useState(null);
-  console.log('dsadawd');
 
   return (
     <View style={{flex: 1}}>

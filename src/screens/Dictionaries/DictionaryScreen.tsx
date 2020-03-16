@@ -61,7 +61,10 @@ export const DictionaryScreen = (props: any) => {
         </Text>
       </ScrollView>
       <View style={styles.main}>
-        <ButtonAdd {...props} destinationScreen={'Training'} />
+        <ButtonAdd
+          handlePress={props.navigation.navigate}
+          destinationScreen={'Training'}
+        />
       </View>
     </View>
   );

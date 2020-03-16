@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1584369245644" clover="3.2.0">
-  <project timestamp="1584369245645" name="All files">
-    <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1" elements="6" coveredelements="4" complexity="0" loc="4" ncloc="4" packages="1" files="1" classes="1"/>
-    <file name="Form.tsx" path="C:\Users\Yan_Asaulenko\Projects\AwesomeTSProject\Components\Form.tsx">
+<coverage generated="1584373000509" clover="3.2.0">
+  <project timestamp="1584373000509" name="All files">
+    <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2" elements="12" coveredelements="8" complexity="0" loc="8" ncloc="8" packages="2" files="2" classes="2"/>
+    <package name="Components">
       <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="5" count="1" type="stmt"/>
-      <line num="6" count="0" type="stmt"/>
-      <line num="8" count="1" type="stmt"/>
-    </file>
+      <file name="Form.tsx" path="C:\Users\Yan_Asaulenko\Projects\AwesomeTSProject\Components\Form.tsx">
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="ButtonAdd.tsx" path="C:\Users\Yan_Asaulenko\Projects\AwesomeTSProject\src\components\ButtonAdd.tsx">
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

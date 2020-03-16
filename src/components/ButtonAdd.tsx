@@ -33,12 +33,17 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
 });
-export const ButtonAdd = props => {
+
+interface IButtonAdd {
+  destinationScreen: string;
+  handlePress: (dest: string) => void;
+}
+export const ButtonAdd = (props: IButtonAdd) => {
   return (
     <TouchableOpacity
       style={styles.button}
       onPress={() => {
-        props.navigation.navigate(props.destinationScreen);
+        props.handlePress(props.destinationScreen);
       }}>
       <Text style={styles.text}>+</Text>
     </TouchableOpacity>
