@@ -1,3 +1,8 @@
+export * from './BodyPhotoScreen';
 export * from './Dictionaries';
 export * from './Directories';
-export {Router} from './Router';
+export * from './Else';
+//export * from "./Programs";
+export * from './Training';
+
+export * from './Router';

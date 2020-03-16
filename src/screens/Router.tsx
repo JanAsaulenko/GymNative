@@ -1,16 +1,9 @@
-import React, {useState} from 'react';
-import {View, Text, Button, SectionList, Image} from 'react-native';
-import {createStackNavigator, HeaderTitle} from '@react-navigation/stack';
-import {NavigationContainer} from '@react-navigation/native';
-import {Programs, Photos} from './index';
+import React from 'react';
+import {View, Text, SectionList, Image} from 'react-native';
+
 import {Item} from '../components/Item';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-} from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import {BottomRouter} from './Dictionaries/BottomRouter';
-const Stack = createStackNavigator();
 
 const CustomDrawerContent = (props: any) => {
   const DATA = [
@@ -63,21 +56,18 @@ const CustomDrawerContent = (props: any) => {
   );
 };
 
+export type RootDrawerNavigationList = {
+  Main: undefined;
+};
+
 export const Router = () => {
-  const Drawer = createDrawerNavigator();
-  let [targetPage, setTargetPage] = React.useState('Main');
+  const Drawer = createDrawerNavigator<RootDrawerNavigationList>();
 
   return (
     <Drawer.Navigator drawerContent={smth => <CustomDrawerContent {...smth} />}>
       <Drawer.Screen name="Main" key="Main">
         {props => {
-          return (
-            <BottomRouter
-              {...props}
-              targetPage={targetPage}
-              setTargetPage={setTargetPage}
-            />
-          );
+          return <BottomRouter {...props} />;
         }}
       </Drawer.Screen>
     </Drawer.Navigator>

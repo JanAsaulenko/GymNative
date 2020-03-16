@@ -7,6 +7,7 @@ import {
   Clipboard,
   TextInput,
 } from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import {useFocusEffect} from '@react-navigation/native';
 const styles = StyleSheet.create({
   main: {
@@ -18,60 +19,13 @@ const styles = StyleSheet.create({
     fontSize: 42,
   },
 });
-export const Training = proper => {
+
+type StackParamList = {};
+export const Training = (proper: any) => {
+  console.log(proper);
+
   const [value, setValue] = useState(null);
-
-  const handler = data => {
-    console.log(data);
-
-    setValue(data);
-  };
-
-  const debouncer = (func: any, debounceTime: number) => {
-    let timer = 0;
-    return (data: string) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func(data);
-      }, debounceTime);
-    };
-  };
-
-  const throttleFunction = (func, ms) => {
-    let isThrotled = false,
-      savedArguments,
-      savedContext;
-
-    function wrapper(...rest: []) {
-      console.log(this);
-
-      if (isThrotled) {
-        (savedArguments = arguments), (savedContext = this);
-      }
-
-      // func.apply(this, arguments);
-      func(rest);
-
-      let timer = setTimeout(() => {
-        console.log(this);
-      }, ms);
-    }
-    return wrapper;
-  };
-  const throttle = (func: (value: string) => void, time: number) => {
-    let timer = 0;
-
-    return (value: string) => {
-      if (timer !== 0) {
-        return;
-      }
-      timer = setTimeout(() => {
-        func(value);
-        clearTimeout(timer);
-        timer = 0;
-      }, time);
-    };
-  };
+  console.log('dsadawd');
 
   return (
     <View style={{flex: 1}}>

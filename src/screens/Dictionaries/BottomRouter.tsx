@@ -1,33 +1,48 @@
 import React from 'react';
-import {
-  createBottomTabNavigator,
-  BottomTabBar,
-} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {RouteProp} from '@react-navigation/native';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DictionaryRouter} from './DictionaryRouter';
-import {Directories} from '../Directories/Directories';
-import {ElseRouter} from '../Else/ElseRouter';
-import {TabNavigation} from 'src/components';
-const Tab = createBottomTabNavigator();
+import {Directories, ElseRouter, RootDrawerNavigationList} from '../index';
 
-export const BottomRouter = () => {
+type RootDrawerNavigation = {
+  Main: undefined;
+};
+
+type Props = {
+  navigation: DrawerNavigationProp<RootDrawerNavigationList, 'Main'>;
+  route: RouteProp<RootDrawerNavigation, 'Main'>;
+};
+
+export type BottomRouterList = {
+  Dictionaries: undefined;
+  Directories: undefined;
+  Else: undefined;
+};
+
+const Tab = createBottomTabNavigator<BottomRouterList>();
+
+export const BottomRouter = (props: Props) => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        key="dictioaries"
-        name="Dictionaries"
-        component={DictionaryRouter}
-      />
+    <>
+      <Tab.Navigator>
+        <Tab.Screen
+          key="dictioaries"
+          name="Dictionaries"
+          component={DictionaryRouter}
+        />
 
-      <Tab.Screen key="directories" name="Directories">
-        {properties => {
-          return <Directories {...properties} />;
-        }}
-      </Tab.Screen>
-      <Tab.Screen key="else" name="Else">
-        {properties => {
-          return <ElseRouter {...properties} />;
-        }}
-      </Tab.Screen>
-    </Tab.Navigator>
+        <Tab.Screen key="directories" name="Directories">
+          {properties => {
+            return <Directories {...properties} />;
+          }}
+        </Tab.Screen>
+        <Tab.Screen key="else" name="Else">
+          {properties => {
+            return <ElseRouter {...properties} />;
+          }}
+        </Tab.Screen>
+      </Tab.Navigator>
+    </>
   );
 };

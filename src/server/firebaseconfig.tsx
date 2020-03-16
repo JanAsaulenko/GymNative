@@ -1,8 +1,7 @@
 import {View} from 'react-native';
-
+import firebase from 'firebase';
 import app from 'firebase/app';
-import 'firebase/analytics';
-import 'firebase/auth';
+
 import 'firebase/database';
 var firebaseConfig = {
   apiKey: 'AIzaSyBP6q2IPrfEBtdIKwCQB0f9hL0S8ND0lL0',
@@ -16,6 +15,7 @@ var firebaseConfig = {
 };
 
 class Server {
+  public db: firebase.database.Database;
   constructor() {
     app.initializeApp(firebaseConfig);
     this.db = app.database();

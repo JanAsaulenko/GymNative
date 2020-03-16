@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, StyleSheet, Text, Button} from 'react-native';
-import {Header} from '../../components/shared/Header';
 import {ButtonAdd} from '../../components/ButtonAdd';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Block} from '../../components/Block';
@@ -28,7 +27,7 @@ export const DictionaryScreen = (props: any) => {
   const serverContext = React.useContext(ServerContext);
 
   serverContext.api.getTrainings().then(data => {
-    console.log(data);
+    // console.log(data);
   });
 
   return (
