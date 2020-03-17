@@ -20,7 +20,7 @@ export const Photos = ({navigation}) => {
 
       <View style={styles.main}>
         <ButtonAdd
-          navigation={navigation}
+          handlePress={navigation.navigate}
           destinationScreen={'MakePhotoScreen'}
         />
       </View>

@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Button,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 type DatePicker = 'date' | 'time';
@@ -10,6 +17,15 @@ interface IDateState {
   visible: boolean;
   type: null | DatePicker;
 }
+
+const styles = StyleSheet.create({
+  main: {
+    position: 'relative',
+    flex: 1,
+  },
+  button: {},
+});
+
 export const MakePhotoScreen = props => {
   const [photoInfo, setPhotoInfo] = React.useState<IDateState>({
     date: new Date(1598051730000),
@@ -67,11 +83,6 @@ export const MakePhotoScreen = props => {
         </TouchableOpacity>
       </View>
 
-      {/* <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}> */}
       <Text>Photo*</Text>
 
       <View style={{flexDirection: 'row', height: 120, marginTop: 10}}>
@@ -112,6 +123,8 @@ export const MakePhotoScreen = props => {
           </TouchableOpacity>
         </View>
       </View>
+
+      <Button title="add" onPress={() => {}} />
 
       {photoInfo.visible && photoInfo.type && (
         <DateTimePicker

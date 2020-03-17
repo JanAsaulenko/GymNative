@@ -25,5 +25,14 @@ class Server {
     let trainings = await response.val();
     return trainings;
   }
+
+  async addPhoto(photoInfo) {
+    const newPhotoKey = this.db()
+      .ref()
+      .child('photos')
+      .push().key;
+
+    await this.db.ref('photos').set({});
+  }
 }
 export const server: Server = new Server();
