@@ -6,12 +6,16 @@ import {
   Button,
   Image,
   StyleSheet,
+  StatusBar,
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {ServerContext} from '../../contexts/ServerContext';
+import {Status} from '../../server/firebaseconfig';
 
+import {navigate} from '../../service/NavigationService';
 type DatePicker = 'date' | 'time';
 
-interface IDateState {
+export interface IDateState {
   date?: Date;
   time: any;
   visible: boolean;
@@ -26,6 +30,11 @@ const styles = StyleSheet.create({
   button: {},
 });
 
+interface ISmth {
+  id: string;
+  status: string;
+}
+
 export const MakePhotoScreen = props => {
   const [photoInfo, setPhotoInfo] = React.useState<IDateState>({
     date: new Date(1598051730000),
@@ -33,6 +42,31 @@ export const MakePhotoScreen = props => {
     visible: false,
     type: null,
   });
+
+  const {api} = React.useContext(ServerContext);
+
+  const handleAddingPhoto = () => {
+    // Add Valiadtion for adding photo data and other fields.Choose required field which we need
+
+    api
+      .addTableItem('photos', {
+        type: `${photoInfo.type}`,
+        date: `${photoInfo.date}`,
+        time: `${photoInfo.time}`,
+        visible: photoInfo.visible,
+        uri: props.route.params.photo.uri,
+      })
+      .then(data => {
+        if (data.status === 'error') {
+          console.log('error handling');
+        } else {
+          navigate<{id: string; status: keyof Status}>('Dictionary', {
+            id: data.id!,
+            status: 'add',
+          });
+        }
+      });
+  };
 
   const generateTime = (time: Date) => {
     return `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
@@ -124,7 +158,7 @@ export const MakePhotoScreen = props => {
         </View>
       </View>
 
-      <Button title="add" onPress={() => {}} />
+      <Button title="add" onPress={() => handleAddingPhoto()} />
 
       {photoInfo.visible && photoInfo.type && (
         <DateTimePicker

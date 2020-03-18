@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 import {ButtonAdd} from '../../components/ButtonAdd';
-
+import {navigationRef} from '../../../App';
 const styles = StyleSheet.create({
   main: {
     position: 'relative',

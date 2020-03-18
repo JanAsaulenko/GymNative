@@ -1,9 +1,12 @@
-import React from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, StyleSheet, Text, Button, Image} from 'react-native';
 import {ButtonAdd} from '../../components/ButtonAdd';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Block} from '../../components/Block';
 import {ServerContext} from '../../contexts/ServerContext';
+import {IAddPhoto} from '../../server/firebaseconfig';
+import {Photos} from '../../components/Photos';
+import {Router} from '../Router';
 const styles = StyleSheet.create({
   main: {
     position: 'relative',
@@ -24,11 +27,7 @@ export const DictionaryScreen = (props: any) => {
     });
   }, [props.navigation]);
 
-  const serverContext = React.useContext(ServerContext);
-
-  serverContext.api.getTrainings().then(data => {
-    // console.log(data);
-  });
+  console.log(props);
 
   return (
     <View style={{flex: 1}}>
@@ -41,15 +40,16 @@ export const DictionaryScreen = (props: any) => {
           label={'Programs'}
           handleEvent={props.navigation.navigate.bind(null, 'Trainings')}
         />
-        <Block
-          label={'Body photo'}
-          handleEvent={props.navigation.navigate.bind(null, 'BodyPhotos')}
+
+        <Photos
+          handleScreen={props.navigation.navigate}
+          refreshKey={props.route}
         />
+
         <Block
           label={'Notes'}
           handleEvent={props.navigation.navigate.bind(null, 'Trainings')}
         />
-
         <Text style={styles.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

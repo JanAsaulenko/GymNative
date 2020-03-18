@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import app from 'firebase/app';
 import 'firebase/database';
-
+import {IDateState} from '../screens/BodyPhotoScreen/MakePhotoScreen';
 const firebaseConfig = {
   apiKey: 'AIzaSyBP6q2IPrfEBtdIKwCQB0f9hL0S8ND0lL0',
   authDomain: 'nativegym-1ed04.firebaseapp.com',
@@ -13,26 +13,48 @@ const firebaseConfig = {
   measurementId: 'G-K0GD1XZSTR',
 };
 
+type TablesName = 'training' | 'photos';
+type Status = 'add' | 'error' | 'remove' | 'update';
+
+export interface IAddPhoto extends IDateState {
+  uri: string;
+}
+
 class Server {
-  public db: firebase.database.Database;
+  private db: firebase.database.Database;
   constructor() {
     app.initializeApp(firebaseConfig);
     this.db = app.database();
   }
 
-  async getTrainings() {
-    let response = await this.db.ref('trainings').once('value');
-    let trainings = await response.val();
-    return trainings;
-  }
+  public getTableItems = async (tableName: TablesName): Promise<[]> => {
+    let response = await this.db.ref(tableName).once('value');
+    let items = await response.val();
+    return items;
+  };
 
-  async addPhoto(photoInfo) {
-    const newPhotoKey = this.db()
+  public addTableItem = async (
+    tableName: TablesName,
+    itemInfo: {[key: string]: string | object | boolean},
+  ): Promise<{id?: string; status: Status}> => {
+    const newPhotoKey = await this.db
       .ref()
-      .child('photos')
+      .child(tableName)
       .push().key;
+    if (newPhotoKey === null) {
+      return {status: 'error'};
+    }
 
-    await this.db.ref('photos').set({});
+    await this.db.ref(`${tableName}/` + newPhotoKey).set({
+      id: newPhotoKey,
+      ...itemInfo,
+    });
+    return {id: newPhotoKey, status: 'add'};
+  };
+
+  async removeItem(tableName: TablesName, id: string): Promise<any> {
+    return await this.db.ref(`${tableName}/` + id).remove();
   }
 }
+
 export const server: Server = new Server();

@@ -10,7 +10,7 @@ import {BottomRouterList} from './BottomRouter';
 import {DictionaryScreen} from '../Dictionaries';
 import {RootDrawerNavigationList} from '../Router';
 import {Trainings} from './Trainings';
-
+import {Photo} from '../BodyPhotoScreen/Photo';
 let Stack = createStackNavigator();
 
 type DictionaryRouterProp = {
@@ -90,6 +90,16 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
           },
         }}
         component={Camera}
+      />
+      <Stack.Screen
+        name="Photo"
+        key="Photo"
+        options={{
+          headerStyle: {
+            backgroundColor: 'orange',
+          },
+        }}
+        component={Photo}
       />
       <Stack.Screen
         name="Training"
