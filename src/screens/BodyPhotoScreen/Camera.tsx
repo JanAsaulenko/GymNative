@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {RNCamera} from 'react-native-camera';
-
+import {ScreensEnum, navigate} from '../../service/NavigationService';
 type cameraType = 'front' | 'back';
 
 interface ICameraPosition {
@@ -17,7 +17,7 @@ export const Camera = props => {
     if (camera.current) {
       try {
         let snipet = await camera.current.takePictureAsync();
-        props.navigation.navigate('MakePhotoScreen', {
+        navigate(ScreensEnum.MakePhotoScreen, {
           photo: snipet,
         });
         setPhoto(snipet.uri);

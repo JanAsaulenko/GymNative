@@ -14,7 +14,7 @@ const firebaseConfig = {
 };
 
 type TablesName = 'training' | 'photos';
-type Status = 'add' | 'error' | 'remove' | 'update';
+export type Status = 'add' | 'error' | 'remove' | 'update';
 
 export interface IAddPhoto extends IDateState {
   uri: string;

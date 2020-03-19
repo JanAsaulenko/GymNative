@@ -11,6 +11,9 @@ import {DictionaryScreen} from '../Dictionaries';
 import {RootDrawerNavigationList} from '../Router';
 import {Trainings} from './Trainings';
 import {Photo} from '../BodyPhotoScreen/Photo';
+import {Screens, ScreensEnum} from '../../service/NavigationService';
+import {Notes} from '../Dictionaries/Notes';
+import {Note} from '../Dictionaries/Note';
 let Stack = createStackNavigator();
 
 type DictionaryRouterProp = {
@@ -25,8 +28,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Dictionary"
-        key="Dictionary"
+        name={ScreensEnum.Dictionary}
+        key={ScreensEnum.Dictionary}
         options={{
           header: _ => (
             <Header title={props.route.name} goBack={props.navigation} />
@@ -35,8 +38,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
         component={DictionaryScreen}
       />
       <Stack.Screen
-        name="Trainings"
-        key="Trainings"
+        name={ScreensEnum.Trainings}
+        key={ScreensEnum.Trainings}
         options={{
           headerTitle: _ => {
             return (
@@ -53,8 +56,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
         component={Trainings}
       />
       <Stack.Screen
-        name="BodyPhotos"
-        key="BodyPhoto"
+        name={ScreensEnum.BodyPhotos}
+        key={ScreensEnum.BodyPhotos}
         options={{
           headerTitle: _ => {
             return (
@@ -71,8 +74,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
         component={Photos}
       />
       <Stack.Screen
-        name="MakePhotoScreen"
-        key="MakePhotoScreen"
+        name={ScreensEnum.MakePhotoScreen}
+        key={ScreensEnum.MakePhotoScreen}
         options={{
           headerStyle: {
             backgroundColor: 'orange',
@@ -82,8 +85,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
       />
 
       <Stack.Screen
-        name="Camera"
-        key="Camera"
+        name={ScreensEnum.Camera}
+        key={ScreensEnum.Camera}
         options={{
           headerStyle: {
             backgroundColor: 'orange',
@@ -92,8 +95,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
         component={Camera}
       />
       <Stack.Screen
-        name="Photo"
-        key="Photo"
+        name={ScreensEnum.Photo}
+        key={ScreensEnum.Photo}
         options={{
           headerStyle: {
             backgroundColor: 'orange',
@@ -102,8 +105,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
         component={Photo}
       />
       <Stack.Screen
-        name="Training"
-        key="Training"
+        name={ScreensEnum.Training}
+        key={ScreensEnum.Training}
         options={{
           headerStyle: {
             backgroundColor: 'orange',
@@ -111,6 +114,25 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
         }}
         component={MakePhotoScreen}
       />
+
+      <Stack.Screen
+        name={ScreensEnum.Notes}
+        key={ScreensEnum.Notes}
+        options={{
+          headerStyle: {
+            backgroundColor: 'orange',
+          },
+        }}
+        component={Notes}></Stack.Screen>
+      <Stack.Screen
+        name={ScreensEnum.Note}
+        key={ScreensEnum.Note}
+        options={{
+          headerStyle: {
+            backgroundColor: 'orange',
+          },
+        }}
+        component={Note}></Stack.Screen>
     </Stack.Navigator>
   );
 };

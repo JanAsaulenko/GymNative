@@ -1,12 +1,10 @@
-import React, {useEffect} from 'react';
-import {View, StyleSheet, Text, Button, Image} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, Text, Button} from 'react-native';
 import {ButtonAdd} from '../../components/ButtonAdd';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Block} from '../../components/Block';
-import {ServerContext} from '../../contexts/ServerContext';
-import {IAddPhoto} from '../../server/firebaseconfig';
 import {Photos} from '../../components/Photos';
-import {Router} from '../Router';
+import {navigate, ScreensEnum} from '../../service/NavigationService';
 const styles = StyleSheet.create({
   main: {
     position: 'relative',
@@ -27,28 +25,23 @@ export const DictionaryScreen = (props: any) => {
     });
   }, [props.navigation]);
 
-  console.log(props);
-
   return (
     <View style={{flex: 1}}>
       <ScrollView>
         <Block
           label={'Trainings'}
-          handleEvent={props.navigation.navigate.bind(null, 'Trainings')}
+          handleEvent={navigate.bind(null, ScreensEnum.Trainings)}
         />
         <Block
           label={'Programs'}
-          handleEvent={props.navigation.navigate.bind(null, 'Trainings')}
+          handleEvent={navigate.bind(null, ScreensEnum.Trainings)}
         />
 
-        <Photos
-          handleScreen={props.navigation.navigate}
-          refreshKey={props.route}
-        />
+        <Photos handleScreen={navigate} refreshKey={props.route} />
 
         <Block
           label={'Notes'}
-          handleEvent={props.navigation.navigate.bind(null, 'Trainings')}
+          handleEvent={navigate.bind(null, ScreensEnum.Notes)}
         />
         <Text style={styles.text}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -62,8 +55,8 @@ export const DictionaryScreen = (props: any) => {
       </ScrollView>
       <View style={styles.main}>
         <ButtonAdd
-          handlePress={props.navigation.navigate}
-          destinationScreen={'Training'}
+          handlePress={navigate}
+          destinationScreen={ScreensEnum.Training}
         />
       </View>
     </View>

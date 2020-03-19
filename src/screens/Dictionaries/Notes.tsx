@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
 import {ButtonAdd} from '../../components/ButtonAdd';
-import {ScreensEnum, navigate} from '../../service/NavigationService';
+import {Screens, navigate, ScreensEnum} from '../../service/NavigationService';
 const styles = StyleSheet.create({
   main: {
     position: 'relative',
@@ -13,14 +13,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Trainings = props => {
+export const Notes = () => {
   return (
     <View style={{flex: 1}}>
-      <Text>"sdsd"</Text>
+      <Text>Photos</Text>
+
       <View style={styles.main}>
         <ButtonAdd
           handlePress={navigate}
-          destinationScreen={ScreensEnum.Training}
+          destinationScreen={ScreensEnum.Note}
         />
       </View>
     </View>

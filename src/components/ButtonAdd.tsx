@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-
+import {Screens} from '../service/NavigationService';
 const styles = StyleSheet.create({
   button: {
     borderRadius: 100,
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
 });
 
 interface IButtonAdd {
-  destinationScreen: string;
-  handlePress: (dest: string) => void;
+  destinationScreen: Screens;
+  handlePress: (dest: Screens) => void;
 }
 export const ButtonAdd = (props: IButtonAdd) => {
   return (

@@ -12,7 +12,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import {ServerContext} from '../../contexts/ServerContext';
 import {Status} from '../../server/firebaseconfig';
 
-import {navigate} from '../../service/NavigationService';
+import {navigate, ScreensEnum} from '../../service/NavigationService';
 type DatePicker = 'date' | 'time';
 
 export interface IDateState {
@@ -20,19 +20,6 @@ export interface IDateState {
   time: any;
   visible: boolean;
   type: null | DatePicker;
-}
-
-const styles = StyleSheet.create({
-  main: {
-    position: 'relative',
-    flex: 1,
-  },
-  button: {},
-});
-
-interface ISmth {
-  id: string;
-  status: string;
 }
 
 export const MakePhotoScreen = props => {
@@ -60,7 +47,7 @@ export const MakePhotoScreen = props => {
         if (data.status === 'error') {
           console.log('error handling');
         } else {
-          navigate<{id: string; status: keyof Status}>('Dictionary', {
+          navigate(ScreensEnum.Dictionary, {
             id: data.id!,
             status: 'add',
           });
@@ -141,7 +128,7 @@ export const MakePhotoScreen = props => {
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            onPress={() => props.navigation.navigate('Camera')}>
+            onPress={() => navigate(ScreensEnum.Camera)}>
             <Text>MAKE PHOTO</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -150,7 +137,7 @@ export const MakePhotoScreen = props => {
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            onPress={() => props.navigation.navigate('Camera')}>
+            onPress={() => navigate(ScreensEnum.Camera)}>
             <View>
               <Text>BROWSE PHOTO</Text>
             </View>

@@ -11,7 +11,7 @@ export default () => {
   return (
     <ServerProvider>
       <Provider store={store}>
-        <NavigationContainer ref={navigationRef} initialState={initialState}>
+        <NavigationContainer ref={navigationRef}>
           <Router />
         </NavigationContainer>
       </Provider>

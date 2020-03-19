@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   main: {
-    paddingLeft: 10,
-    paddingRight: 10,
+    // paddingLeft: 10,
+    // paddingRight: 10,
   },
   emptyContent: {
     height: 100,

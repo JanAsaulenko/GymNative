@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {ServerContext} from '../contexts/ServerContext';
 import {IAddPhoto} from '../server/firebaseconfig';
+import {ScreensEnum, navigate} from '../service/NavigationService';
 import {Block} from './Block';
 
 export const Photos = props => {
@@ -27,7 +28,7 @@ export const Photos = props => {
     return (
       <Block
         label={'Body photo'}
-        handleEvent={props.handleScreen.bind(null, 'BodyPhotos', {
+        handleEvent={props.handleScreen.bind(null, ScreensEnum.BodyPhotos, {
           photos: photos,
         })}>
         <View
@@ -41,7 +42,7 @@ export const Photos = props => {
             .map((photo, index) => {
               return (
                 <TouchableOpacity
-                  onPress={props.handleScreen.bind(null, 'Photo', {
+                  onPress={props.handleScreen.bind(null, ScreensEnum.Photo, {
                     photo: photo,
                   })}>
                   <Image
@@ -59,7 +60,7 @@ export const Photos = props => {
   return (
     <Block
       label={'Body photo'}
-      handleEvent={() => props.handleScreen('BodyPhotos')}
+      handleEvent={() => props.handleScreen(ScreensEnum.BodyPhotos)}
     />
   );
 };
