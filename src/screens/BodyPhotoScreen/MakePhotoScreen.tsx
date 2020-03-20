@@ -13,10 +13,12 @@ import {ServerContext} from '../../contexts/ServerContext';
 import {Status} from '../../server/firebaseconfig';
 
 import {navigate, ScreensEnum} from '../../service/NavigationService';
+import {ButtonAdd} from '../../components/ButtonAdd';
+import {DatePickerInput} from '../../components/DatePickerInput';
 type DatePicker = 'date' | 'time';
 
 export interface IDateState {
-  date?: Date;
+  date: Date;
   time: any;
   visible: boolean;
   type: null | DatePicker;
@@ -24,7 +26,7 @@ export interface IDateState {
 
 export const MakePhotoScreen = props => {
   const [photoInfo, setPhotoInfo] = React.useState<IDateState>({
-    date: new Date(1598051730000),
+    date: new Date(),
     time: new Date(),
     visible: false,
     type: null,
@@ -60,48 +62,9 @@ export const MakePhotoScreen = props => {
   };
 
   return (
-    <View style={{marginTop: 10, paddingLeft: 10, paddingRight: 10}}>
-      <Text> Date and time of photo</Text>
-      <View
-        style={{
-          flexDirection: 'row',
-          marginTop: 20,
-          marginBottom: 20,
-          justifyContent: 'space-between',
-        }}>
-        <TouchableOpacity
-          onPress={() => {
-            setPhotoInfo((prevState: IDateState) => {
-              return {...prevState, type: 'date', visible: true};
-            });
-          }}>
-          <View
-            style={{
-              borderBottomWidth: 1,
-              width: 'auto',
-              minWidth: '45%',
-              borderBottomColor: 'black',
-            }}>
-            <Text>{photoInfo.date!.toDateString()}</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => {
-            setPhotoInfo((prevState: IDateState) => {
-              return {...prevState, type: 'time', visible: true};
-            });
-          }}>
-          <View
-            style={{
-              borderBottomWidth: 1,
-              width: 'auto',
-              minWidth: '45%',
-              borderBottomColor: 'black',
-            }}>
-            <Text>{generateTime(photoInfo.time)}</Text>
-          </View>
-        </TouchableOpacity>
+    <View style={{flex: 1, marginTop: 10, paddingLeft: 10, paddingRight: 10}}>
+      <View style={{height: 120}}>
+        <DatePickerInput state={photoInfo} handleChanges={setPhotoInfo} />
       </View>
 
       <Text>Photo*</Text>
@@ -145,33 +108,9 @@ export const MakePhotoScreen = props => {
         </View>
       </View>
 
-      <Button title="add" onPress={() => handleAddingPhoto()} />
-
-      {photoInfo.visible && photoInfo.type && (
-        <DateTimePicker
-          style={{
-            shadowColor: '#fff',
-            shadowRadius: 0,
-            shadowOpacity: 1,
-            shadowOffset: {height: 0, width: 0},
-          }}
-          mode={photoInfo.type}
-          is24Hour={true}
-          display="default"
-          value={photoInfo[photoInfo.type]}
-          timeZoneOffsetInMinutes={0}
-          onChange={(event, datas) => {
-            setPhotoInfo((prevState: IDateState) => {
-              return {
-                ...prevState,
-                type: null,
-                [photoInfo.type!]: datas ? datas : photoInfo[photoInfo.type!],
-                visible: false,
-              };
-            });
-          }}
-        />
-      )}
+      <View style={{flex: 1}}>
+        <ButtonAdd handleEvent={handleAddingPhoto} />
+      </View>
     </View>
   );
 };

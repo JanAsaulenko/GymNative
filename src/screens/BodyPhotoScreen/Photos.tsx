@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Button, Image, StyleSheet} from 'react-native';
-import {ButtonAdd} from '../../components/ButtonAdd';
+import {PlusButton} from '../../components/PlusButton';
 import {Screens, navigate, ScreensEnum} from '../../service/NavigationService';
 import {ServerContext} from '../../contexts/ServerContext';
 import {IAddPhoto} from '../../server/firebaseconfig';
@@ -17,16 +17,14 @@ const styles = StyleSheet.create({
 });
 
 export const Photos = props => {
-  const {photos} = props.route.params;
+  const photos =
+    props.route.params &&
+    props.route.params.photos &&
+    props.route.params.photos.length &&
+    props.route.params.photos;
 
-  console.log(
-    photos.length &&
-      photos.sort((a: IAddPhoto, b: IAddPhoto) => {
-        return a.date! > b.date! ? 1 : -1;
-      }),
-  );
   const items =
-    photos.length &&
+    photos &&
     photos
       .sort((a: IAddPhoto, b: IAddPhoto) => {
         return a.date! > b.date! ? 1 : -1;
@@ -43,7 +41,6 @@ export const Photos = props => {
             result[`${nextElement.date}`] = [];
             result[`${nextElement.date}`].push(nextElement);
           }
-
           return result;
         },
         {},
@@ -51,11 +48,11 @@ export const Photos = props => {
 
   return (
     <View style={{flex: 1, margin: 10}}>
-      {photos.length && (
+      {photos && (
         <View>
           {Object.keys(items).map(el => {
             return (
-              <View>
+              <View key={el}>
                 {items[el] ? (
                   <Block label={el} handleEvent={console.log}>
                     <View
@@ -84,7 +81,7 @@ export const Photos = props => {
       )}
 
       <View style={styles.main}>
-        <ButtonAdd
+        <PlusButton
           handlePress={navigate}
           destinationScreen={ScreensEnum.MakePhotoScreen}
         />

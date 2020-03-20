@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {ButtonAdd} from '../../components/ButtonAdd';
+import {PlusButton} from '../../components/PlusButton';
 import {ScreensEnum, navigate} from '../../service/NavigationService';
 const styles = StyleSheet.create({
   main: {
@@ -18,7 +18,7 @@ export const Trainings = props => {
     <View style={{flex: 1}}>
       <Text>"sdsd"</Text>
       <View style={styles.main}>
-        <ButtonAdd
+        <PlusButton
           handlePress={navigate}
           destinationScreen={ScreensEnum.Training}
         />

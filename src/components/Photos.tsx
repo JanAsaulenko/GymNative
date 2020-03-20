@@ -42,6 +42,7 @@ export const Photos = props => {
             .map((photo, index) => {
               return (
                 <TouchableOpacity
+                  key={index}
                   onPress={props.handleScreen.bind(null, ScreensEnum.Photo, {
                     photo: photo,
                   })}>

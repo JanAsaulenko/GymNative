@@ -1,51 +1,29 @@
 import React from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
-import {Screens} from '../service/NavigationService';
+import {TouchableOpacity, View, Text, StyleSheet} from 'react-native';
+
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 100,
-    backgroundColor: 'orange',
     position: 'absolute',
-    width: 50,
-    height: 50,
-    right: 20,
-    bottom: 20,
-    alignItems: 'center',
+    bottom: 0,
+    width: '100%',
+    flexDirection: 'row',
     justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.51,
-    shadowRadius: 13.16,
-
-    elevation: 20,
+    alignItems: 'center',
+    borderTopColor: 'grey',
+    borderTopWidth: 1,
+    height: 50,
   },
   text: {
-    color: 'white',
-    fontSize: 30,
+    color: 'red',
   },
 });
-
 interface IButtonAdd {
-  destinationScreen: Screens;
-  handlePress: (dest: Screens) => void;
+  handleEvent: () => void;
 }
 export const ButtonAdd = (props: IButtonAdd) => {
   return (
-    <TouchableOpacity
-      style={styles.button}
-      onPress={() => {
-        props.handlePress(props.destinationScreen);
-      }}>
-      <Text style={styles.text}>+</Text>
+    <TouchableOpacity style={styles.button} onPress={() => props.handleEvent()}>
+      <Text style={styles.text}>BUTTON ADD</Text>
     </TouchableOpacity>
   );
 };

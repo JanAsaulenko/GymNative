@@ -12,8 +12,8 @@ import {RootDrawerNavigationList} from '../Router';
 import {Trainings} from './Trainings';
 import {Photo} from '../BodyPhotoScreen/Photo';
 import {Screens, ScreensEnum} from '../../service/NavigationService';
-import {Notes} from '../Dictionaries/Notes';
-import {Note} from '../Dictionaries/Note';
+import {Notes} from '../Notes/Notes';
+import {Note} from '../Notes/Note';
 let Stack = createStackNavigator();
 
 type DictionaryRouterProp = {

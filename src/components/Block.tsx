@@ -18,10 +18,7 @@ const styles = StyleSheet.create({
   header__button: {
     color: 'red',
   },
-  main: {
-    // paddingLeft: 10,
-    // paddingRight: 10,
-  },
+  main: {},
   emptyContent: {
     height: 100,
     justifyContent: 'center',

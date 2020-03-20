@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Text, Button} from 'react-native';
-import {ButtonAdd} from '../../components/ButtonAdd';
+import {PlusButton} from '../../components/PlusButton';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Block} from '../../components/Block';
 import {Photos} from '../../components/Photos';
@@ -54,7 +54,7 @@ export const DictionaryScreen = (props: any) => {
         </Text>
       </ScrollView>
       <View style={styles.main}>
-        <ButtonAdd
+        <PlusButton
           handlePress={navigate}
           destinationScreen={ScreensEnum.Training}
         />

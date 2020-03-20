@@ -5,7 +5,7 @@
 import("react-native");
 import React from "react";
 import { shallow } from "enzyme";
-import { ButtonAdd } from "../src/components/ButtonAdd";
+import { PlusButton } from "../src/components/PlusButton";
 import { Text } from "react-native"
 
 const { Form } = require('../Components/Form');
@@ -28,7 +28,7 @@ describe('rendering', () =>
   it("should render a button", () =>
   {
 
-    const component = shallow(<ButtonAdd />);
+    const component = shallow(<PlusButton />);
     expect(component).toMatchSnapshot()
   })
 
