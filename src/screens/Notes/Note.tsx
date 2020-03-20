@@ -1,20 +1,7 @@
-import React, {useState} from 'react';
-// import {Lens} from 'ramda';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
-import {Screens, navigate, ScreensEnum} from '../../service/NavigationService';
+import React from 'react';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 import {ButtonAdd} from '../../components/ButtonAdd';
-import {State} from 'react-native-gesture-handler';
-import {IDateState} from '../../components/DatePickerInput';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import {DatePickerInput} from '../../components/DatePickerInput';
-import {lens, path, lensProp, lensPath} from 'ramda';
 const styles = StyleSheet.create({
   main: {
     position: 'relative',
@@ -79,16 +66,14 @@ export const Note = () => {
       <TextInput
         onFocus={() => handleStatus('name')}
         onBlur={() => handleStatus('name')}
-        style={
-          !comment.name.status ? styles.input : styles.input__active
-        }></TextInput>
+        style={!comment.name.status ? styles.input : styles.input__active}
+      />
       <Text>Note</Text>
       <TextInput
         onFocus={() => handleStatus('note')}
         onBlur={() => handleStatus('note')}
-        style={
-          !comment.note.status ? styles.input : styles.input__active
-        }></TextInput>
+        style={!comment.note.status ? styles.input : styles.input__active}
+      />
 
       <DatePickerInput handleChanges={setComment} state={comment} />
 

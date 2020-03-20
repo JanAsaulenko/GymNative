@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {PlusButton} from '../../components/PlusButton';
-import {Screens, navigate, ScreensEnum} from '../../service/NavigationService';
+import {navigate, ScreensEnum} from '../../service/NavigationService';
 const styles = StyleSheet.create({
   main: {
     position: 'relative',

@@ -23,15 +23,14 @@ interface IDataPickerInput<S> {
 export const DatePickerInput = <S extends IDateItems>(
   props: IDataPickerInput<S>,
 ) => {
-  const generateTime = (time: Date) => {
-    return `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
-  };
-
   let [state, setState] = React.useState<IDateState>({
     type: null,
     visible: false,
   });
 
+  const generateTime = (time: Date) => {
+    return `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
+  };
   let typeLens = lens(prop('type'), assoc('type'));
   let type: DatePicker = view(typeLens, state);
 

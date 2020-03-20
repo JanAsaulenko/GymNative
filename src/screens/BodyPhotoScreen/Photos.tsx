@@ -1,8 +1,7 @@
 import React from 'react';
-import {View, Text, Button, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import {PlusButton} from '../../components/PlusButton';
-import {Screens, navigate, ScreensEnum} from '../../service/NavigationService';
-import {ServerContext} from '../../contexts/ServerContext';
+import {navigate, ScreensEnum} from '../../service/NavigationService';
 import {IAddPhoto} from '../../server/firebaseconfig';
 import {Block} from '../../components/Block';
 const styles = StyleSheet.create({

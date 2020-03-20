@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 import {ServerContext} from '../contexts/ServerContext';
 import {IAddPhoto} from '../server/firebaseconfig';
-import {ScreensEnum, navigate} from '../service/NavigationService';
+import {ScreensEnum} from '../service/NavigationService';
 import {Block} from './Block';
 
 export const Photos = props => {
@@ -22,7 +22,7 @@ export const Photos = props => {
         return data ? Object.values(data) : [];
       });
     });
-  }, [key, status]);
+  }, [key, status, api]);
 
   if (photos.length) {
     return (

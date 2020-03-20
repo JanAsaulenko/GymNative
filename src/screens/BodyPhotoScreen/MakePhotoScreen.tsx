@@ -1,17 +1,6 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Button,
-  Image,
-  StyleSheet,
-  StatusBar,
-} from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {ServerContext} from '../../contexts/ServerContext';
-import {Status} from '../../server/firebaseconfig';
-
 import {navigate, ScreensEnum} from '../../service/NavigationService';
 import {ButtonAdd} from '../../components/ButtonAdd';
 import {DatePickerInput} from '../../components/DatePickerInput';

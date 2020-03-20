@@ -22,7 +22,7 @@ export type BottomRouterList = {
 
 const Tab = createBottomTabNavigator<BottomRouterList>();
 
-export const BottomRouter = (props: Props) => {
+export const BottomRouter = () => {
   return (
     <>
       <Tab.Navigator>

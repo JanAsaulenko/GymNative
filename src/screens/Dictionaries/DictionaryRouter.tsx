@@ -11,7 +11,7 @@ import {DictionaryScreen} from '../Dictionaries';
 import {RootDrawerNavigationList} from '../Router';
 import {Trainings} from './Trainings';
 import {Photo} from '../BodyPhotoScreen/Photo';
-import {Screens, ScreensEnum} from '../../service/NavigationService';
+import {ScreensEnum} from '../../service/NavigationService';
 import {Notes} from '../Notes/Notes';
 import {Note} from '../Notes/Note';
 let Stack = createStackNavigator();
@@ -123,7 +123,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
             backgroundColor: 'orange',
           },
         }}
-        component={Notes}></Stack.Screen>
+        component={Notes}
+      />
       <Stack.Screen
         name={ScreensEnum.Note}
         key={ScreensEnum.Note}
@@ -132,7 +133,8 @@ export const DictionaryRouter = (props: DictionaryRouterProp) => {
             backgroundColor: 'orange',
           },
         }}
-        component={Note}></Stack.Screen>
+        component={Note}
+      />
     </Stack.Navigator>
   );
 };

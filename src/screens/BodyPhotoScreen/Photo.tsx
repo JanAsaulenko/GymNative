@@ -34,7 +34,6 @@ export const Photo = props => {
         <View
           style={{
             position: 'absolute',
-            //   backgroundColor: 'black',
             shadowOpacity: 0.8,
             flex: 1,
             height: '100%',
